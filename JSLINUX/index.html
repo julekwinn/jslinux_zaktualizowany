@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>JSLinux z konsolą deweloperską</title>
+    
+    <link href="style.css" type="text/css" rel="stylesheet"/>
+
+</head>
+<body>
+    <div id="term_wrap">
+        <div id="term_container"></div>
+        <div>
+            <textarea id="term_paste" cols="10" rows="1" autocorrect="off">Paste Here</textarea>
+            <label>
+                <img title="Upload files" src="images/upload-icon.png">
+                <input type="file" id="files" multiple onchange="on_update_files(this.files)">
+            </label>
+            <progress id="net_progress"></progress>
+        </div>
+    </div>
+
+    <div class="logger-container" id="logger">
+        <div class="logger-header">
+            <div class="logger-controls">
+                <input type="text" class="logger-filter" id="logFilter" placeholder="Filter logs...">
+                <select class="logger-filter" id="moduleFilter">
+                    <option value="">All modules</option>
+                </select>
+                <button class="logger-button" id="clearLogs">Clear</button>
+                <button class="logger-button" id="toggleAutoScroll">Auto-scroll: ON</button>
+                <button class="logger-button" id="exportLogs">Export</button>
+            </div>
+            <div>
+                <button class="logger-button" id="toggleLogger">_</button>
+            </div>
+        </div>
+        <div class="logger-content" id="loggerContent"></div>
+    </div>
+
+    <script type="text/javascript">
+        var Browser = {
+            wgetRequests: {},
+            getNextWgetRequestHandle: function () {
+                return Object.keys(this.wgetRequests).length + 1;
+            }
+        };
+    </script>
+
+    <script type="text/javascript" src="term.js"></script>
+    <script type="text/javascript" src="jslinux.js"></script>
+    <script src="Logger.js"></script>
+
+    <div id="copyright">&copy; 2017-2019 Fabrice Bellard</div>
+</body>
+</html>
